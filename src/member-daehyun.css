@@ -1,6 +1,10 @@
 .member-head {
     display: flex;
-    margin-top: 50px;
+}
+
+.ml-5 {
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .member-item {
