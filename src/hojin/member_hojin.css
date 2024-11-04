@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Nanum+Pen+Script&display=swap');
+
+* {
+    font-family: "Jua", sans-serif;
+}
+
+#my_img {
+    width: 200px;
+    height: 250px;
+    margin: 30px 50px 20px 20px;
+    border-radius: 20%;
+    object-fit: cover;
+}
+
+h1 {
+    font-family: "Nanum Pen Script", cursive;
+    text-align: center;
+    margin: 100px auto 80px auto;
+}
+
+.profile {
+    width: 55%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.p_1, .p_2, .p_3 {
+    padding: 2px;
+    color: white;
+    border-radius: 20%;
+    object-fit: cover;
+}
+
+.p_1 {
+    background-color: #1DDB16;
+}
+
+.p_2 {
+    background-color: #0054FF;
+}
+
+.p_3 {
+    background-color: #FFBB00;
+}
+
+.benefit {
+    padding-top: 30px;
+}
+
+.sty {
+    padding-top: 50px;
+}
+
+.icon img {
+    margin-right: 20px;
+    object-fit: cover;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.icon {
+    padding-bottom: 50px;
+}
