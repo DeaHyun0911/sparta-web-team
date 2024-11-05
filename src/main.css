@@ -153,19 +153,3 @@ body {
 }
 
 /* 로그인, 회원가입 */
-
-.member-container {
-	max-width: 450px;
-	margin: 0 auto;
-}
-
-/* 버튼 효과 */
-
-.btn-info:hover {
-	background: none;
-	color: black;
-	border: 1px solid;
-	font-size: 1em;
-	transform: translateY(-5px);
-	box-shadow: 0 0.5em 0.5em -0.4em rgb(44, 130, 164);
-}
