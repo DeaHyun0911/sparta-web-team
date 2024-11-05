@@ -16,4 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { db, collection, addDoc, getDocs };
+async function fetchData(collectionName) {
+    const querySnapshot = await getDocs(collection(db, collectionName));
+    const data = querySnapshot.docs.map(doc => doc.data());
+    return data;
+  }
+
+export { db, collection, addDoc, getDocs, fetchData };

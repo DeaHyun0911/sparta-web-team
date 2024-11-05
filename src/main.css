@@ -51,7 +51,7 @@ body {
     font-family: "Noto Sans KR", sans-serif;
 }
 
-.container {
+.web-container {
     max-width: 800px;
     margin:0 auto;
 }
@@ -65,3 +65,9 @@ body {
     font-size: 40px;
 }
 
+/* 로그인, 회원가입 */
+
+.member-container {
+	max-width: 450px;
+	margin:0 auto;
+}

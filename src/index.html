@@ -20,14 +20,6 @@
     }
 </style>
 
-<!-- 파이어베이스 모듈 추가 -->
-<script type="module">
-import { db, collection, addDoc, getDocs } from './firebase.js';
-
-
-
-</script>
-
 <body>
     <!-- 헤더 -->
     <header>
@@ -97,3 +89,18 @@ import { db, collection, addDoc, getDocs } from './firebase.js';
 </body>
 
 </html>
+
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+    import { fetchData } from './modules/firebase.js'; 
+    
+    async function displayConsole() {
+            const data = await fetchData('members'); 
+
+            data.forEach(member => {
+                console.log(member.name); // 각 멤버의 이름 출력
+            });
+        }
+    
+        displayConsole();
+</script>
