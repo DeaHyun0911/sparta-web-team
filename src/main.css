@@ -22,7 +22,7 @@ a:hover {
 }
 
 .web-container {
-	max-width: 600px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 
@@ -39,7 +39,7 @@ a:hover {
 /* 메인 페이지 */
 
 .mycards {
-	width: 600px;
+	width: 800px;
 	margin: 30px auto 100px auto;
 }
 
