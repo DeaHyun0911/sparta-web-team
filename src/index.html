@@ -27,11 +27,32 @@
     }
 </style>
 
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+import { db, collection, addDoc, getDocs } from './firebase.js';
+
+
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('mainnavbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('mainnavbar').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    });
+</script>
+
 <body>
+    
     <!-- 헤더 -->
     <header>
-
+        <div id="mainnavbar"></div>
     </header>
+
     <!-- 팀 소개 -->
     <section>
         <h2>ABOUT</h2>
