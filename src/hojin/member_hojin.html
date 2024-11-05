@@ -10,28 +10,29 @@
 <link rel="stylesheet" href="member_hojin.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="module">
-    import { fetchData } from '../modules/firebase.js'; 
-    
-    async function displayMemberData(memberName) {
-        const data = await fetchData('members'); 
-        
-        const member = data.find(member => member.name === memberName); 
+    import { fetchData } from '../modules/firebase.js';
 
-            $('#m_name').text(member.name);
-            $('#m_age').text(member.age);
-            $('#m_mbti').text(member.mbti);
-            $('.m_comment').text(member.comment);
-            $('.m_merit').html(member.merit);
-            $('.m_style').html(member.style);
-            $('.m_tmi').html(member.tmi);
-            $('#my_img').attr('src', member.url);
-            $('#blog').attr('href', member.blog);
+    async function displayMemberData(memberName) {
+        const data = await fetchData('members');
+
+        const member = data.find(member => member.name === memberName);
+
+        $('#m_name').text(member.name);
+        $('#m_age').text(member.age);
+        $('#m_mbti').text(member.mbti);
+        $('.m_comment').text(member.comment);
+        $('.m_merit').html(member.merit);
+        $('.m_style').html(member.style);
+        $('.m_tmi').html(member.tmi);
+        $('#my_img').attr('src', member.img_url);
+        $('#blog').attr('href', member.blog);
 
     }
-    
+
 
     displayMemberData('김호진'); 
 </script>
+
 <body>
     <h1>안녕하세요~ 팀의 막내 김호진 입니다!</h1>
     <div class="profile"><!--프로필-->
@@ -43,10 +44,12 @@
                 <h4 class="m_comment"></h4>
                 <p class="m_tmi"></p>
                 <div class="icon">
-                    블로그:  <a id="blog"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA1MDNfMTIx%2FMDAxNjIwMDE2ODUzODY2.GpIC8w2H_pIqAahd_Km5NEsk-3gAr88XK9BNr1Egc9Yg.PJsJNcO2jbk2fpTnEb4kZRA857QRyU4CwYNZk8lYsbwg.PNG.xavisnet%2F%25C6%25BC%25BD%25BA%25C5%25E4%25B8%25AE.png&type=a340"></a>
-                    포트폴리오: <a href=" https://boggy-romano-039.notion.site/16fb16255fb04fa381b2d5e22f713f32"> <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MDlfNDIg%2FMDAxNzIwNTMyMTE3NDE4.TucMFbU2PV-PEO2uVlBtMurv0AuHWhHYwDeqRZPXeRAg.3xMCzMngy8FD80GwmUELncz3Kh9V7zDA2Te3fMrMuDwg.JPEG%2FIMG_1794.JPG&type=a340"></a>
-                  </div>
-                
+                    블로그: <a id="blog"><img
+                            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA1MDNfMTIx%2FMDAxNjIwMDE2ODUzODY2.GpIC8w2H_pIqAahd_Km5NEsk-3gAr88XK9BNr1Egc9Yg.PJsJNcO2jbk2fpTnEb4kZRA857QRyU4CwYNZk8lYsbwg.PNG.xavisnet%2F%25C6%25BC%25BD%25BA%25C5%25E4%25B8%25AE.png&type=a340"></a>
+                    포트폴리오: <a href=" https://boggy-romano-039.notion.site/16fb16255fb04fa381b2d5e22f713f32"> <img
+                            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MDlfNDIg%2FMDAxNzIwNTMyMTE3NDE4.TucMFbU2PV-PEO2uVlBtMurv0AuHWhHYwDeqRZPXeRAg.3xMCzMngy8FD80GwmUELncz3Kh9V7zDA2Te3fMrMuDwg.JPEG%2FIMG_1794.JPG&type=a340"></a>
+                </div>
+
             </div>
         </div>
         <div class="info"><!--이름 나이 MBTI-->
@@ -64,7 +67,7 @@
             <p class="m_style">
             </p>
         </div>
-        
+
 
     </div>
 

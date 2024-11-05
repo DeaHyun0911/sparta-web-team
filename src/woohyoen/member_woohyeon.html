@@ -67,26 +67,27 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="module">
-    import { fetchData } from '../modules/firebase.js'; 
-    
-    async function displayMemberData(memberName) {
-        const data = await fetchData('members'); 
-        
-        const member = data.find(member => member.name === memberName); 
+    import { fetchData } from '../modules/firebase.js';
 
-            $('.m_name').append(member.name);
-            $('.m_age').append(member.age);
-            $('.m_mbti').append(member.mbti);
-            $('.m_comment').append(member.comment);
-            $('.m_merit').text(member.merit);
-            $('.m_style').text(member.style);
-            $('.m_tmi').text(member.tmi);
-            $('#image').attr('src', member.url);
+    async function displayMemberData(memberName) {
+        const data = await fetchData('members');
+
+        const member = data.find(member => member.name === memberName);
+
+        $('.m_name').append(member.name);
+        $('.m_age').append(member.age);
+        $('.m_mbti').append(member.mbti);
+        $('.m_comment').append(member.comment);
+        $('.m_merit').text(member.merit);
+        $('.m_style').text(member.style);
+        $('.m_tmi').text(member.tmi);
+        $('#image').attr('src', member.img_url);
     }
-    
+
 
     displayMemberData('김우현'); 
 </script>
+
 <body>
     <div class="container">
         <div class="intro">
@@ -98,7 +99,7 @@
                     <p class="m_mbti">MBTI: </p>
                     <p class="m_comment">한줄소개: </p>
                 </div>
-                <div class="image"><img id="image"/></div>
+                <div class="image"><img id="image" /></div>
             </div>
         </div>
         <div class="details">
