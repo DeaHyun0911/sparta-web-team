@@ -47,9 +47,22 @@
 
 </html>
 
+<script src="./modules/header.js" type="module"></script>
+
+
 <!-- 파이어베이스 모듈 추가 -->
 <script type="module">
-    import { fetchData } from './modules/firebase.js';
+    import { auth, fetchData } from './modules/firebase.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("로그인 상태입니다:", user.email);
+        } else {
+            console.log("로그인되지 않았습니다.");
+        }
+    });
+
 
     async function displayMemberData() {
         const data = await fetchData('members');

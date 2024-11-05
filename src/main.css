@@ -169,5 +169,6 @@ body {
 }
 .form__error {
 	display: none;
+	color: red;
 }
 
