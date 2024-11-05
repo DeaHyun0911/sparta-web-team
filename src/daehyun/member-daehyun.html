@@ -48,3 +48,27 @@
     </section>
 </body>
 </html>
+
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+    import { fetchData } from '../modules/firebase.js'; 
+    
+    async function displayConsole() {
+            const data = await fetchData('members'); 
+            const member = data.find(member => member.name === '최대현'); 
+            if (member) {
+                console.log(`Name: ${member.name}`);
+                console.log(`Age: ${member.age}`);
+                console.log(`MBTI: ${member.mbti}`);
+                console.log(`hobby: ${member.hobby}`);
+                console.log(`Introduction: ${member.comment}`);
+                console.log(`Benefit: ${member.merit}`);
+                console.log(`Style: ${member.style}`);
+            }else{
+                console.log('Member not found');
+            };
+
+        }
+    
+        displayConsole();
+</script>

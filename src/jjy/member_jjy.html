@@ -41,8 +41,6 @@
             margin-left: 80px;
             margin-right: 300px;
         }
-        
-
 
     </style>
 </head>
@@ -56,6 +54,7 @@
         
         <h3>이름 : 진주양</h3>
         <h3>MBTI : ENTP</h3>
+        <h3>나이 : 28</h3>
         <h3>취미 : 웹소설 읽기</h3>
         <h3>특징: 투머치토커</h3>
      </div>
@@ -63,15 +62,48 @@
         <img src="../../resources/img/jjy.jpg" style="float: right;" width="400" class="img-thumbnail" >
      </div>
 
-     <div style="width: 150;height: 150px;border:1px;float:inline-start;">
+     <div style="width: 150;height: 100px;border:1px;float:inline-start;">
         <h1>나의 장점</h1>
         <h4>딱딱한 분위기에서도 말을 잘 하는 투머치토커입니다.  분위기를 잘 살릴 수 있는 부분이 장점인 것 같아요</h4>
     </div>
-    <div style="width: 150;height: 150px;border:1px;float:inline-start;">
+    <div style="width: 150;height: 100px;border:1px;float:inline-start;">
         <h1>협업 스타일</h1>
         <h4>
             개발에 있어서 모르는 것이 있으면 각자 돌아서서 해결하기보다는 모르는 것은 서로 상호 보완하는 것이 중요하다고 생각을 합니다. 혼자서 계속 안되는 문제는 서로 나누어서 성장하는 개발을 하고 싶습니다. 
         </h4>
     </div>
+    <div style="width: 150;height: 100px;border:1px;float:inline-start;">
+        <h1>TMI</h1>
+        <h4>
+            보안과 전공생이며 웹개발은 22년을 마지막으로 해보았고, 자바 등은 최근에도 해서 가능합니다.
+        </h4>
+    </div>
 </body>
+
 </html>
+
+
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+    import { fetchData } from '../modules/firebase.js'; 
+    
+    async function displayConsole() {
+            const data = await fetchData('members'); 
+            const member = data.find(member => member.name === '진주양'); 
+            if (member) {
+                console.log(`Name: ${member.name}`);
+                console.log(`MBTI: ${member.mbti}`);
+                console.log(`Age: ${member.age}`);
+                console.log(`hobby: ${member.hobby}`);
+                console.log(`Introduction: ${member.comment}`);
+                console.log(`Benefit: ${member.merit}`);
+                console.log(`Style: ${member.style}`);
+                console.log(`Tmi: ${member.tmi}`);
+            }else{
+                console.log('Member not found');
+            };
+
+        }
+    
+        displayConsole();
+</script>
