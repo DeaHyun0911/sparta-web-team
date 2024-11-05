@@ -30,6 +30,7 @@
       emailInput.addEventListener("input", () => {
         const validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!validRegex.test(emailInput.value)) {
+            
           setError("이메일 형식이 올바르지 않습니다.");
         } else {
           setError("");
@@ -66,7 +67,7 @@
           window.location.href = "index.html"; // 메인 페이지로 리다이렉트
         } catch (error) {
           console.error(error);
-          setError("회원가입에 실패하였습니다: " + error.message);
+          setError("회원가입에 실패하였습니다.");
         }
       });
     });
