@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    font-family: "Jua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mytitle{
+    background-color: rgb(215, 242, 250);
+    height: 50px;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
+}
+
+.profilebox{
+    background-color: rgb(215, 242, 250);
+    float: left;;
+    height: 300px;
+    width: 400px;
+    text-align: center;
+    margin-top: 30px;
+    margin-inline: 100px;
+    box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
+}
+
+.myimg{
+    float: left;;
+    height: 300px;
+    width: 400px;
+    margin-top: 30px;
+    margin-inline: 100px;
+}
+
+.benefit{
+    text-align: left;
+    width: 100;
+    height: 100px;
+    border:1px;
+    float:inline-start;
+}
+
+.style{
+    text-align: left;
+    width: 100;
+    height: 100px;
+    border:1px;
+    float:inline-start;
+}
+
+.tmi{
+    text-align: left;
+    width: 100;
+    height: 100px;
+    border:1px;
+    float:inline-start;
+}
