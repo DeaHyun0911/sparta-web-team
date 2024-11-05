@@ -97,5 +97,28 @@
     <p>네트워크 엔지니어로 일하다 백엔드로 취업하고자 해당 프로그램에 참여하였습니다. 이 과정을 통해 백엔드로서의 실무 능력을 키우고자 하며, 나아가 원하는 직종에서의 취업까지 생각하고 있습니다.</p>
 </div>
 
+<script type="module">
+    import { fetchData } from '../modules/firebase.js'; 
+    
+    async function displayConsole() {
+            const data = await fetchData('members'); 
+            const member = data.find(member => member.name === '우혁규'); 
+            if (member) {
+                console.log(`Name: ${member.name}`);
+                console.log(`Age: ${member.age}`);
+                console.log(`MBTI: ${member.mbti}`);
+                console.log(`hobby: ${member.hobby}`);
+                console.log(`Introduction: ${member.comment}`);
+                console.log(`Benefit: ${member.merit}`);
+                console.log(`Style: ${member.style}`);
+            }else{
+                console.log('Member not found');
+            };
+
+        }
+    
+        displayConsole();
+</script>
+
 </body>
 </html>
