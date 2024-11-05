@@ -51,12 +51,13 @@
 <script type="module">
     import { fetchData } from './modules/firebase.js';
 
-    async function displayConsole() {
+    async function displayMemberData() {
         const data = await fetchData('members');
         data.forEach(member => {
             let name = member.name;
             let comment = member.comment;
-            let img_url = member.url;
+            let img_url = member.img_url;
+            let page_url = member.page_url;
 
             let temp_html = `
                 <div class="col">
@@ -65,18 +66,14 @@
                         <div class="card-body">
                             <h5 class="card-title">${name}</h5>
                             <p class="card-text">${comment}</p>
-                            <a href="#" class="btn btn-info">상세페이지</a>
+                            <a href="${page_url}" class="btn btn-info">상세페이지</a>
                         </div>
                     </div>
                 </div>`;
 
             $('#card').append(temp_html);
         });
-
-        data.forEach(member => {
-            console.log(member.name); // 각 멤버의 이름 출력
-        });
     }
 
-    displayConsole();
+    displayMemberData();
 </script>
