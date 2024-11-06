@@ -7,84 +7,50 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/src/main.css">
+    
 </head>
-
-<style>
-    .mycards {
-        width: 600px;
-        margin: 30px auto 100px auto;
-    }
-
-    .profile_img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-</style>
-
-<!-- 파이어베이스 모듈 추가 -->
-<script type="module">
-import { db, collection, addDoc, getDocs } from './firebase.js';
-
-
-
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch('mainnavbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('mainnavbar').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading navbar:', error));
-    });
-</script>
 
 <body>
     
     <!-- 헤더 -->
     <header>
-        <div id="mainnavbar"></div>
+        <div id="navbar"></div>
     </header>
 
     <!-- 팀 소개 -->
-    <section>
-        <h2>ABOUT</h2>
+    <section class="web-container mt-5">
+        <h2 class="sub-title">웹개발 희망편</h2>
+        
     </section>
     <!-- 팀원 소개 -->
     <section>
         <div class="mycards">
+            <div class="mb-5">
+                <h2 class="sub-title mb-3">맴버들</h2>
+                <p>공동의 목표를 향해 함께 달릴 준비가 된 훌륭한 동료들입니다.</p>
+            </div>
             <div id="card" class="row row-cols-1 row-cols-md-2 g-4">
             </div>
         </div>
     </section>
+
+    <!-- 공통 모듈 -->
+    <script src="/src/main.js" type="module"></script>
 </body>
-
 </html>
-
-<script src="./modules/header.js" type="module"></script>
 
 
 <!-- 파이어베이스 모듈 추가 -->
 <script type="module">
     import { auth, fetchData } from './modules/firebase.js';
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log("로그인 상태입니다:", user.email);
-        } else {
-            console.log("로그인되지 않았습니다.");
-        }
-    });
-
-
+    
+    // 맴버 카드 랜더링
     async function displayMemberData() {
         const data = await fetchData('members');
         data.forEach(member => {
@@ -95,14 +61,13 @@ import { db, collection, addDoc, getDocs } from './firebase.js';
 
             let temp_html = `
                 <div class="col">
-                    <div class="card h-100">
+                    <a href="${page_url}" class="card h-100">
                         <img src="${img_url}" class="profile_img" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${name}</h5>
                             <p class="card-text">${comment}</p>
-                            <a href="${page_url}" class="btn btn-info">상세페이지</a>
                         </div>
-                    </div>
+                    </a>
                 </div>`;
 
             $('#card').append(temp_html);
@@ -110,4 +75,5 @@ import { db, collection, addDoc, getDocs } from './firebase.js';
     }
 
     displayMemberData();
+
 </script>
