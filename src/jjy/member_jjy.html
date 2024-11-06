@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,58 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>팀원 소개_진주양</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
-        * {
-            font-family: "Jua", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .mytitle{
-            background-color: rgb(215, 242, 250);
-            height: 50px;
-            color: black;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
-            margin-top: 50px;
-        }
-        
-        .profilebox{
-            background-color: rgb(215, 242, 250);
-            float: left;;
-            height: 300px;
-            width: 400px;
-            text-align: center;
-            margin-top: 30px;
-            margin-inline: 100px;
-            box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
-        }
-        .myimg{
-            float: left;
-            margin-top: 30px;
-            margin-left: 80px;
-            margin-right: 300px;
-        }
-
-    </style>
 </head>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch('../navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading navbar:', error));
-    });
-</script>
 
 <body>
     <header>
@@ -66,66 +16,52 @@
     </header>
 
     <!-- 팀원 개인 소개 페이지 -->
-     <div class="mytitle">
-        <h1>소개 페이지</h1>  
-     </div>
-     <div class="profilebox">
+    <div class="mytitle">
+        <h1>소개 페이지</h1>
+    </div>
+    <div class="profilebox">
         <h2>프로필</h2>
-        
-        <h3>이름 : 진주양</h3>
-        <h3>MBTI : ENTP</h3>
-        <h3>나이 : 28</h3>
-        <h3>취미 : 웹소설 읽기</h3>
-        <h3>특징: 투머치토커</h3>
-     </div>
-     <div class="myimg">
-        <img src="../../resources/img/jjy.jpg" style="float: right;" width="400" class="img-thumbnail" >
-     </div>
+        <div class="info"><!--이름 나이 MBTI-->
+            <h3>이름 : <a class="m_name"></a></h3>
+            <h3>MBTI : <a class="m_mbti"></a></h3>
+            <h3>나이 : <a class="m_age"></a></h3>
+            <h3>취미 : <a class="m_hobby"></a></h3>
+            <h3>특징 : <a class="m_comment"></a></h3>
+        </div>
+    </div>
+   
+    </div> 
+    <div class="myimg">
+        <img id="my_img">
+    </div>
 
-     <div style="width: 150;height: 100px;border:1px;float:inline-start;">
-        <h1>나의 장점</h1>
-        <h4>딱딱한 분위기에서도 말을 잘 하는 투머치토커입니다.  분위기를 잘 살릴 수 있는 부분이 장점인 것 같아요</h4>
-    </div>
-    <div style="width: 150;height: 100px;border:1px;float:inline-start;">
-        <h1>협업 스타일</h1>
-        <h4>
-            개발에 있어서 모르는 것이 있으면 각자 돌아서서 해결하기보다는 모르는 것은 서로 상호 보완하는 것이 중요하다고 생각을 합니다. 혼자서 계속 안되는 문제는 서로 나누어서 성장하는 개발을 하고 싶습니다. 
-        </h4>
-    </div>
-    <div style="width: 150;height: 100px;border:1px;float:inline-start;">
-        <h1>TMI</h1>
-        <h4>
-            보안과 전공생이며 웹개발은 22년을 마지막으로 해보았고, 자바 등은 최근에도 해서 가능합니다.
-        </h4>
-    </div>
 
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
 </body>
 </html>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 파이어베이스 모듈 추가 -->
 <script type="module">
-    import { fetchData } from '../modules/firebase.js'; 
-    
-    async function displayConsole() {
-            const data = await fetchData('members'); 
-            const member = data.find(member => member.name === '진주양'); 
-            if (member) {
-                console.log(`Name: ${member.name}`);
-                console.log(`MBTI: ${member.mbti}`);
-                console.log(`Age: ${member.age}`);
-                console.log(`hobby: ${member.hobby}`);
-                console.log(`Introduction: ${member.comment}`);
-                console.log(`Benefit: ${member.merit}`);
-                console.log(`Style: ${member.style}`);
-                console.log(`Tmi: ${member.tmi}`);
-            }else{
-                console.log('Member not found');
-            };
+    import { fetchData } from '../modules/firebase.js';
 
-        }
-    
-        displayConsole();
+    async function displayConsole() {
+        const data = await fetchData('members');
+        const member = data.find(member => member.name === '진주양');
+        console.log(member.name);
+
+        $('.m_name').text(member.name);
+        $('.m_age').text(member.age);
+        $('.m_mbti').text(member.mbti);
+        $('.m_hobby').text(member.hobby);
+        $('.m_comment').text(member.comment);
+        $('.m_merit').html(member.merit);
+        $('.m_style').html(member.style);
+        $('.m_tmi').html(member.tmi);
+        $('#my_img').attr('src', member.img_url);
+
+    }
+
+    displayConsole();
 </script>
