@@ -12,6 +12,30 @@
     <title>팀장 최대현</title>
 </head>
 
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+    import { fetchData } from '../modules/firebase.js'; 
+    
+    async function displayConsole() {
+            const data = await fetchData('members'); 
+            const member = data.find(member => member.name === '최대현'); 
+            if (member) {
+                console.log(`Name: ${member.name}`);
+                console.log(`Age: ${member.age}`);
+                console.log(`MBTI: ${member.mbti}`);
+                console.log(`hobby: ${member.hobby}`);
+                console.log(`Introduction: ${member.comment}`);
+                console.log(`Benefit: ${member.merit}`);
+                console.log(`Style: ${member.style}`);
+            }else{
+                console.log('Member not found');
+            };
+
+        }
+    
+        displayConsole();
+</script>
+
 <body>
 
     <header>
@@ -58,36 +82,12 @@
     </section>
     </section>
     <div id="guestbookSection" data-username="최대현"></div>
+    <div id="footer"></div>
 
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
-
-  
-
 </body>
 
 </html>
 
-<!-- 파이어베이스 모듈 추가 -->
-<script type="module">
-    import { fetchData } from '../modules/firebase.js';
 
-    async function displayConsole() {
-        const data = await fetchData('members');
-        const member = data.find(member => member.name === '최대현');
-        if (member) {
-            console.log(`Name: ${member.name}`);
-            console.log(`Age: ${member.age}`);
-            console.log(`MBTI: ${member.mbti}`);
-            console.log(`hobby: ${member.hobby}`);
-            console.log(`Introduction: ${member.comment}`);
-            console.log(`Benefit: ${member.merit}`);
-            console.log(`Style: ${member.style}`);
-        } else {
-            console.log('Member not found');
-        };
-
-    }
-
-    displayConsole();
-</script>

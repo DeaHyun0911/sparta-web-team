@@ -13,11 +13,11 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/src/main.css">
-    
+
 </head>
 
 <body>
-    
+
     <!-- 헤더 -->
     <header>
         <div id="navbar"></div>
@@ -26,7 +26,13 @@
     <!-- 팀 소개 -->
     <section class="web-container mt-5">
         <h2 class="sub-title">웹개발 희망편</h2>
-        
+        <div class="img-container">
+            <img src="/resources/img/행복회로.jpg" alt="" class="default-img">
+            <img src="/resources/img/절망회로.jpg" alt="" class="hover-img">
+        </div>
+        <p class="sub-description">화면에 "Hello World" 를 띄우며 벌써 실리콘밸리에서 근무하는 행복회로를 돌리지만, 현실은 오류와 디버깅 지옥에서 절망회로 돌리기 바쁘다.
+            그래도 한 줄 한 줄 코드를 완성하며
+            느끼는 성취감에, 그들은 다시 희망회로를 돌리며 오늘도 컴퓨터 앞에 앉는다...</p>
     </section>
     <!-- 팀원 소개 -->
     <section>
@@ -40,16 +46,19 @@
         </div>
     </section>
 
+    <div id="footer"></div>
+
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
 </body>
+
 </html>
 
 
 <!-- 파이어베이스 모듈 추가 -->
 <script type="module">
     import { auth, fetchData } from './modules/firebase.js';
-    
+
     // 맴버 카드 랜더링
     async function displayMemberData() {
         const data = await fetchData('members');

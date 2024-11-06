@@ -15,27 +15,45 @@
     import { auth } from './modules/firebase.js';
     import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
+
+
     // 회원가입 로직
     document.addEventListener("DOMContentLoaded", function () {
       const emailInput = document.getElementById("email");
       const passwordInput = document.getElementById("password");
       const passwordConfirmInput = document.getElementById("password_confirm");
       const errorMessage = document.querySelector(".form__error");
+      
+
       const signupForm = document.getElementById("signup-form");
+      const formSubmit = document.getElementById("form-submit");
+      const validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
       function setError(message) {
         errorMessage.textContent = message;
         errorMessage.style.display = message ? "block" : "none";
       }
+      
+      function validateForm() {
+        const validEmail = validRegex.test(emailInput.value);
+        const validPassword = passwordInput.value.length >= 8;
+        const passwordsMatch = passwordInput.value === passwordConfirmInput.value;
+
+        if (validEmail && validPassword && passwordsMatch) {
+            formSubmit.disabled = false;
+        } else {
+            formSubmit.disabled = true;
+        }
+    }
+
 
       emailInput.addEventListener("input", () => {
-        const validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!validRegex.test(emailInput.value)) {
-            
           setError("이메일 형식이 올바르지 않습니다.");
         } else {
           setError("");
         }
+        validateForm()
       });
 
       passwordInput.addEventListener("input", () => {
@@ -46,6 +64,7 @@
         } else {
           setError("");
         }
+        validateForm()
       });
 
       passwordConfirmInput.addEventListener("input", () => {
@@ -56,7 +75,10 @@
         } else {
           setError("");
         }
+        validateForm()
       });
+
+      
 
       signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -67,8 +89,19 @@
           alert("회원가입에 성공하였습니다.");
           window.location.href = "index.html"; // 메인 페이지로 리다이렉트
         } catch (error) {
+
           console.error(error);
-          setError("회원가입에 실패하였습니다.");
+          switch (error.code) {
+            case 'auth/email-already-in-use':
+                setError("이미 사용 중인 이메일입니다.");
+                break;
+            case 'auth/invalid-email':
+                setError("유효하지 않은 이메일 형식입니다.");
+                break;
+            default:
+                setError("회원가입에 실패하였습니다. 다시 시도해주세요.");
+                break;
+        }
         }
       });
     });
@@ -106,9 +139,10 @@
             </div>
                 <p class="form__error"></p>
             
-            <button type="submit" class="w-100 btn btn-primary">회원가입</button>
+            <button id="form-submit" type="submit" class="w-100 btn btn-primary" disabled>회원가입</button>
           </form>
     </section>
+    <div id="footer"></div>
 
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>

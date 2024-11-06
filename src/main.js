@@ -48,10 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error loading navbar:', error));
 });
 
+// 방명록 html넣기
 document.addEventListener("DOMContentLoaded", function () {
     // data-username 속성에서 값을 읽어옴
     const userName = document.getElementById("guestbookSection").getAttribute("data-username");
     console.log("userName:", userName); // userName 값이 제대로 들어오는지 확인
+
 
     fetch('/src/guestbook.html')
         .then(response => response.text())
@@ -65,4 +67,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => console.error("Failed to load guestbook.js:", error));
         })
         .catch(error => console.error('Error loading guestbook.html:', error));
+    });
+// footer
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/src/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+
 });

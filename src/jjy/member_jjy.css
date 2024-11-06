@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    font-family: "Jua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mytitle{
+    background-color: rgb(215, 242, 250);
+    height: 80px;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
+}
+
+.mytitle h1 {
+    margin-bottom: 0;
+}
+
+.profile-flex-box {
+    display: flex;
+    width: 100%;
+}
+
+.profilebox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    box-sizing: border-box;
+    background-color: rgb(215, 242, 250);
+    text-align: center;
+    box-shadow: 1px 1px 3px 1px rgb(141, 176, 187);
+}
+
+.myimg{
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.myimg img {
+    width: 100%;;
+}
+#guestbookSection{
+    margin-top: 100px;
+}

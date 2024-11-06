@@ -10,6 +10,29 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
+<script type="module">
+    import { fetchData } from '../modules/firebase.js';
+
+    async function displayMemberData(memberName) {
+        const data = await fetchData('members');
+
+        const member = data.find(member => member.name === memberName);
+
+        $('.m_name').append(member.name);
+        $('.m_age').append(member.age);
+        $('.m_mbti').append(member.mbti);
+        $('.m_comment').append(member.comment);
+        $('.m_merit').text(member.merit);
+        $('.m_style').text(member.style);
+        $('.m_tmi').html(member.tmi);
+        $('#image').attr('src', member.img_url);
+    }
+
+
+    displayMemberData('김우현'); 
+</script>
+
+
 <style>
     * {
         box-sizing: border-box;
@@ -24,7 +47,7 @@
 
     .container {
         max-width: 800px;
-        margin: 50px auto;
+        margin: 90px auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 8px;
@@ -66,6 +89,9 @@
     .details h2 {
         margin-top: 35px;
     }
+    #guestbookSection{
+        margin-top: 50px;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -98,29 +124,10 @@
     
     <div id="guestbookSection" data-username="김우현"></div>
 
+    <div id="footer"></div>
+
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
 </body>
 </html>
 
-<script type="module">
-    import { fetchData } from '../modules/firebase.js';
-
-    async function displayMemberData(memberName) {
-        const data = await fetchData('members');
-
-        const member = data.find(member => member.name === memberName);
-
-        $('.m_name').append(member.name);
-        $('.m_age').append(member.age);
-        $('.m_mbti').append(member.mbti);
-        $('.m_comment').append(member.comment);
-        $('.m_merit').text(member.merit);
-        $('.m_style').text(member.style);
-        $('.m_tmi').html(member.tmi);
-        $('#image').attr('src', member.img_url);
-    }
-
-
-    displayMemberData('김우현'); 
-</script>
