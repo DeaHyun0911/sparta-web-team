@@ -1,4 +1,3 @@
-
 /* 공통 */
 
 body {
@@ -52,11 +51,11 @@ a:hover {
 
 
 /* 버튼 효과 */
-.btn-info:hover{
+.btn-info:hover {
 	background: none;
 	color: black;
 	border: 1px solid;
-	font-size: 1em;	
+	font-size: 1em;
 	transform: translateY(-5px);
 	box-shadow: 0 0.5em 0.5em -0.4em rgb(44, 130, 164);
 }
@@ -64,7 +63,7 @@ a:hover {
 /* 로그인, 회원가입 */
 .member-container {
 	max-width: 360px;
-	margin:0 auto;
+	margin: 0 auto;
 }
 
 .member-container .col-sm-10 {
@@ -91,7 +90,7 @@ a:hover {
 
 .login,
 .logout {
- display: none;
+	display: none;
 }
 
 /* 맴버 카드 */
@@ -107,3 +106,40 @@ a:hover {
 	font-weight: 600;
 }
 
+.sub-description {
+	line-height: 1.5;
+	font-size: 18px;
+	font-weight: 550;
+}
+
+/*hover 이미지*/
+
+.img-container {
+	position: relative;
+	width: 790px;
+	height: 450px;
+	overflow: hidden;
+	margin: 30px 0px 30px 0px;
+	border-radius: 15px;
+}
+
+.img-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: opacity 0.8s ease;
+}
+
+.img-container .hover-img {
+	opacity: 0;
+}
+
+.img-container:hover .default-img {
+	opacity: 0;
+}
+
+.img-container:hover .hover-img {
+	opacity: 1;
+}
