@@ -148,3 +148,42 @@ a:hover {
 .img-container:hover .hover-img {
 	opacity: 1;
 }
+
+ /* footer */
+
+ #footer {
+	padding: 20px 0;
+	text-align: center;
+	background-color: rgb(216, 216, 216);
+}
+
+.footer-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+  }
+  
+  .footer-logo h2 {
+	font-size: 24px;
+  }
+
+  .footer-social a {
+	color: #f0f0f0;
+	text-decoration: none;
+	font-size: 16px;
+	transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+	color: #1e90ff; /* 호버 시 밝은 색으로 변경 */
+  }
+  
+  .footer-social a {
+	font-size: 18px;
+	margin: 0 8px;
+  }
+  
+  .footer-copyright {
+	font-size: 14px;
+	margin-top: 10px;
+  }

@@ -48,5 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// footer
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/src/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
 
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+});
