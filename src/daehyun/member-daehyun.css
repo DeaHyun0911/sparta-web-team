@@ -3,7 +3,7 @@
 }
 
 .ml-5 {
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 150px;
 }
 
@@ -34,10 +34,16 @@
 
 .member-left .member-character .character-left {
     font-weight: 600;
+    flex: 1;
 }
 
 .member-left .member-character .character-right {
-    margin-left: 30px;
+    margin-left: 20px;
+    flex: 2;
+}
+
+.member-left .member-character ul {
+    padding: 0;
 }
 
 .member-left .member-character ul li {
@@ -61,7 +67,7 @@
     width: 100%;
 }
 
-.member-container {
+.dh-container {
     margin-top: 50px;
 }
 

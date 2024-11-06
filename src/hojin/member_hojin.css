@@ -16,7 +16,7 @@
 h1 {
     font-family: "Nanum Pen Script", cursive;
     text-align: center;
-    margin: 100px auto 80px auto;
+    margin: 50px auto 80px auto;
 }
 
 .profile {
@@ -31,13 +31,14 @@ h1 {
 }
 
 .info {
+    margin-left: 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
 .p_1, .p_2, .p_3 {
-    padding: 2px;
+    padding: 5px;
     color: white;
     border-radius: 20%;
     object-fit: cover;
@@ -56,10 +57,12 @@ h1 {
 }
 
 .benefit {
+    margin-left: 10px;
     padding-top: 30px;
 }
 
 .sty {
+    margin-left: 10px;
     padding-top: 50px;
 }
 
