@@ -66,6 +66,10 @@ a:hover {
 	margin: 0 auto;
 }
 
+section.member-container {
+	height: 70vh;
+}
+
 .member-container .col-sm-10 {
 	width: 100%;
 }
@@ -152,6 +156,7 @@ a:hover {
  /* footer */
 
  #footer {
+	margin-top: 50px;
 	padding: 20px 0;
 	text-align: center;
 	background-color: rgb(216, 216, 216);
