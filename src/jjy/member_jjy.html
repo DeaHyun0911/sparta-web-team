@@ -11,6 +11,32 @@
     <title>팀원 소개_진주양</title>
 </head>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 파이어베이스 모듈 추가 -->
+<script type="module">
+    import { fetchData } from '../modules/firebase.js';
+
+    async function displayConsole() {
+        const data = await fetchData('members');
+        const member = data.find(member => member.name === '진주양');
+        console.log(member.name);
+
+        $('.m_name').text(member.name);
+        $('.m_age').text(member.age);
+        $('.m_mbti').text(member.mbti);
+        $('.m_hobby').text(member.hobby);
+        $('.m_comment').text(member.comment);
+        $('.m_merit').html(member.merit);
+        $('.m_style').html(member.style);
+        $('.m_tmi').html(member.tmi);
+        $('#my_img').attr('src', member.img_url);
+
+    }
+
+    displayConsole();
+</script>
+
 <body>
     <header>
         <div id="navbar"></div>
@@ -55,35 +81,8 @@
         </div>
         
     </div>
-    
-
-
+    <div id="footer"></div>
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
 </body>
 </html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 파이어베이스 모듈 추가 -->
-<script type="module">
-    import { fetchData } from '../modules/firebase.js';
-
-    async function displayConsole() {
-        const data = await fetchData('members');
-        const member = data.find(member => member.name === '진주양');
-        console.log(member.name);
-
-        $('.m_name').text(member.name);
-        $('.m_age').text(member.age);
-        $('.m_mbti').text(member.mbti);
-        $('.m_hobby').text(member.hobby);
-        $('.m_comment').text(member.comment);
-        $('.m_merit').html(member.merit);
-        $('.m_style').html(member.style);
-        $('.m_tmi').html(member.tmi);
-        $('#my_img').attr('src', member.img_url);
-
-    }
-
-    displayConsole();
-</script>
