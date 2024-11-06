@@ -75,6 +75,11 @@ a:hover {
 	color: red;
 }
 
+#form-submit:disabled {
+	background-color: gray;
+	border-color: gray;
+}
+
 /* 네비게이션 */
 
 .navbar {
