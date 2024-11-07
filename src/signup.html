@@ -13,18 +13,14 @@
 <!-- 파이어베이스 모듈 추가 -->
 <script type="module">
     import { auth } from './modules/firebase.js';
-    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
-
-
-    // 회원가입 로직
     document.addEventListener("DOMContentLoaded", function () {
       const emailInput = document.getElementById("email");
       const passwordInput = document.getElementById("password");
       const passwordConfirmInput = document.getElementById("password_confirm");
+      const nicknameInput = document.getElementById("nickname"); // 닉네임 입력 필드
       const errorMessage = document.querySelector(".form__error");
-      
-
       const signupForm = document.getElementById("signup-form");
       const formSubmit = document.getElementById("form-submit");
       const validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -38,58 +34,33 @@
         const validEmail = validRegex.test(emailInput.value);
         const validPassword = passwordInput.value.length >= 8;
         const passwordsMatch = passwordInput.value === passwordConfirmInput.value;
+        const validNickname = nicknameInput.value.trim().length > 0; // 닉네임 입력 확인
 
-        if (validEmail && validPassword && passwordsMatch) {
+        if (validEmail && validPassword && passwordsMatch && validNickname) {
             formSubmit.disabled = false;
         } else {
             formSubmit.disabled = true;
         }
-    }
+      }
 
-
-      emailInput.addEventListener("input", () => {
-        if (!validRegex.test(emailInput.value)) {
-          setError("이메일 형식이 올바르지 않습니다.");
-        } else {
-          setError("");
-        }
-        validateForm()
-      });
-
-      passwordInput.addEventListener("input", () => {
-        if (passwordInput.value.length < 8) {
-          setError("비밀번호는 8자리 이상으로 입력해주세요.");
-        } else if (passwordConfirmInput.value && passwordInput.value !== passwordConfirmInput.value) {
-          setError("비밀번호와 비밀번호 확인 값이 다릅니다. 다시 확인해주세요.");
-        } else {
-          setError("");
-        }
-        validateForm()
-      });
-
-      passwordConfirmInput.addEventListener("input", () => {
-        if (passwordConfirmInput.value.length < 8) {
-          setError("비밀번호는 8자리 이상으로 입력해주세요.");
-        } else if (passwordInput.value !== passwordConfirmInput.value) {
-          setError("비밀번호와 값이 다릅니다. 다시 확인해주세요.");
-        } else {
-          setError("");
-        }
-        validateForm()
-      });
-
-      
+      emailInput.addEventListener("input", validateForm);
+      passwordInput.addEventListener("input", validateForm);
+      passwordConfirmInput.addEventListener("input", validateForm);
+      nicknameInput.addEventListener("input", validateForm);
 
       signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (errorMessage.textContent) return;
 
         try {
-          await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+          const userCredential = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+          const user = userCredential.user;
+
+          // 닉네임 업데이트
+          await updateProfile(user, { displayName: nicknameInput.value });
           alert("회원가입에 성공하였습니다.");
           window.location.href = "index.html"; // 메인 페이지로 리다이렉트
         } catch (error) {
-
           console.error(error);
           switch (error.code) {
             case 'auth/email-already-in-use':
@@ -101,44 +72,45 @@
             default:
                 setError("회원가입에 실패하였습니다. 다시 시도해주세요.");
                 break;
-        }
+          }
         }
       });
     });
-
-
 </script>
 
 <body>
-    <!-- 헤더 -->
     <header>
       <div id="navbar"></div>
     </header>
 
-    <!-- 회원가입 페이지 -->
     <section class="member-container mt-5">
         <h2 class="sub-title">회원가입</h2>
         <form id="signup-form">
             <div class="mb-3">
-              <label for="inputEmail3" class="col-sm-4 col-form-label">이메일</label>
+                <label for="nickname" class="col-sm-4 col-form-label">닉네임</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="nickname">
+                </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="col-sm-4 col-form-label">이메일</label>
               <div class="col-sm-10">
                 <input type="email" class="form-control" id="email">
               </div>
             </div>
             <div class="mb-3">
-              <label for="inputPassword3" class="col-sm-4 col-form-label">비밀번호</label>
+              <label for="password" class="col-sm-4 col-form-label">비밀번호</label>
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="password">
               </div>
             </div>
             <div class="mb-3">
-                <label for="inputPassword3" class="col-sm-4 col-form-label">비밀번호 확인</label>
+                <label for="password_confirm" class="col-sm-4 col-form-label">비밀번호 확인</label>
                 <div class="col-sm-10">
                   <input type="password" class="form-control" id="password_confirm">
                 </div>
             </div>
-                <p class="form__error"></p>
-            
+            <p class="form__error"></p>
             <button id="form-submit" type="submit" class="w-100 btn btn-primary" disabled>회원가입</button>
           </form>
     </section>
@@ -149,4 +121,3 @@
 
 </body>
 </html>
-

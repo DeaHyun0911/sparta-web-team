@@ -48,7 +48,8 @@
     .container {
         max-width: 800px;
         margin: 90px auto;
-        padding: 20px;
+        margin-bottom: 0;
+        padding: 40px;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -68,6 +69,11 @@
     .personal-info {
         flex: 1;
         padding-right: 20px;
+    }
+
+    .personal-info h4,
+    .personal-info p {
+        text-align: left;
     }
 
     .image {
@@ -92,6 +98,18 @@
     #guestbookSection{
         margin-top: 50px;
     }
+
+    .profile-image {
+        background-color: gray !important;
+    }
+
+    .entry:first-child {
+        border-top: none !important;
+    }
+
+    .entry {
+        border-top: 1px solid #eaeaea !important;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -103,10 +121,10 @@
 
     <div class="container">
         <div class="intro">
-            <h1>팀원 소개</h1>
+            <h1 class="mb-5">팀원 소개</h1>
             <div class="info">
                 <div class="personal-info">
-                    <h2 class="m_name">이름: </h2>
+                    <h4 class="m_name">이름: </h2>
                     <p class="m_age">나이: </p>
                     <p class="m_mbti">MBTI: </p>
                     <p class="m_comment">한줄소개: </p>
@@ -115,9 +133,9 @@
             </div>
         </div>
         <div class="details">
-            <h2>자신만의 장점</h2>
+            <h4>자신만의 장점</h2>
             <p class="m_merit"></p>
-            <h2>협업 스타일</h2>
+            <h4>협업 스타일</h2>
             <p class="m_style"></p>
         </div>
     </div>

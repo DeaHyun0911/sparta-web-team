@@ -157,23 +157,25 @@ section.member-container {
 
  #footer {
 	margin-top: 50px;
-	padding: 20px 0;
+	padding: 40px 0;
 	text-align: center;
 	background-color: rgb(216, 216, 216);
 }
 
 .footer-container {
-	max-width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 800px;
 	margin: 0 auto;
-	padding: 0 20px;
   }
   
   .footer-logo h2 {
 	font-size: 24px;
+	margin: 0;
   }
 
   .footer-social a {
-	color: #f0f0f0;
 	text-decoration: none;
 	font-size: 16px;
 	transition: color 0.3s;
@@ -184,11 +186,23 @@ section.member-container {
   }
   
   .footer-social a {
+	color: rgb(51, 61, 75);
 	font-size: 18px;
 	margin: 0 8px;
   }
   
   .footer-copyright {
 	font-size: 14px;
-	margin-top: 10px;
+	margin-top: 15px;
   }
+
+
+  /* 유틸 박스 */
+ .util-box {
+	align-items: center;
+	gap: 20px;
+ }
+
+ .user-name {
+	font-weight: 600;
+ }

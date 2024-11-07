@@ -17,7 +17,7 @@ function checkLoginStatus(callback) {
       callback(user);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      window.location.href = "login.html";
+      window.location.href = "/src/login.html";
     }
   });
 }
@@ -28,14 +28,13 @@ export function submitGuestbookEntry(pageOwner) {
     e.preventDefault(); // 새로고침 없이 DB에 바로 저장
 
     checkLoginStatus(async (user) => {
-      const nickname = document.getElementById("in_nickname").value;
       const content = document.getElementById("in_content").value;
 
       try {
         await addDoc(collection(db, "guestbook"), {
           pageOwner: pageOwner,        // 페이지 주인 
           writerEmail: user.email,     // 작성자 이메일 (로그인된 사용자)
-          nickname: nickname,          // 입력된 닉네임
+          nickname: user.displayName,   // 입력된 닉네임
           content: content,            // 입력된 내용
           date: serverTimestamp()      // 작성 날짜
         });
@@ -77,20 +76,36 @@ function displayEntry(entry) {
   entryDiv.dataset.id = entry.id; // 숨겨진 항목으로 ID 저장
   entryDiv.dataset.writerEmail = entry.writerEmail; // 숨겨진 항목으로 작성자 이메일 저장
 
+  const profileBox = document.createElement("div");
+  profileBox.classList.add("profile-box");
+  
+  const profileContent = document.createElement("div");
+  profileContent.classList.add("profile-content");
+
+  const profileImageDiv = document.createElement("div");
+  profileImageDiv.classList.add("profile-image");
+
   const nicknameDiv = document.createElement("div");
   nicknameDiv.classList.add("nickname");
   nicknameDiv.textContent = entry.nickname;
-
-  const contentDiv = document.createElement("div");
-  contentDiv.textContent = entry.content;
-
   const dateDiv = document.createElement("div");
   dateDiv.classList.add("date");
   dateDiv.textContent = entry.date ? new Date(entry.date.seconds * 1000).toLocaleString() : "날짜 정보 없음";
 
-  entryDiv.appendChild(nicknameDiv);
+  profileBox.appendChild(profileImageDiv);
+
+  profileBox.appendChild(profileContent);
+
+
+  profileContent.appendChild(nicknameDiv);
+  profileContent.appendChild(dateDiv);
+
+  entryDiv.appendChild(profileBox);
+
+  const contentDiv = document.createElement("div");
+  contentDiv.classList.add("entry-content");
+  contentDiv.textContent = entry.content;
   entryDiv.appendChild(contentDiv);
-  entryDiv.appendChild(dateDiv);
 
   // 현재 로그인한 사용자의 이메일과 작성자의 이메일이 같을 경우 수정/삭제 버튼 추가
   const currentUserEmail = auth.currentUser ? auth.currentUser.email : null;

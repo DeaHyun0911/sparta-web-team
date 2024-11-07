@@ -1,7 +1,5 @@
 <style>
-  .guestbook * {
-    font-family: Arial, sans-serif;
-  }
+
   
   .guestbookTitle {
     text-align: center;
@@ -13,7 +11,6 @@
   form {
     display: flex;
     flex-direction: column;
-    padding: 20px;
     border-radius: 8px;
   }
   
@@ -32,11 +29,10 @@
   
   .guestbook input:focus,
   textarea:focus {
-    border-color: #6a00ff;
+    border-color: #1e90ff;
     outline: none;
   }
   #in_content {
-    width: 95%;
     height: 150px;
   }
 
@@ -46,13 +42,12 @@
   }
   .submit-btn {
     padding: 12px 24px;
-    margin: 15px auto 0;
-    width: 200px;
+    width: 150px;
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
     color: white;
-    background-color: #6a00ff;
+    background-color: #1e90ff;
     border: none;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -64,19 +59,16 @@
     transform: translateY(-2px);
   }
   
-  #guestbookEntries {
-    padding: 10px;
-    max-width: 90%;
-    margin: auto;
-  }
+
   
   /*-- entry 방명록 한개 div -- */
   .entry {
-    background-color: #f8f6f6;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgb(241, 243, 245);
+    padding: 25px 0;
+  }
+  
+  .entry:first-child {
+    border: none;
   }
   
   .entry .nickname {
@@ -89,46 +81,37 @@
     margin-top: 5px;
     text-align: right;
   }
+
+  .entry-content {
+    margin: 20px 0;
+  }
+
+  .edit-btn:hover, .delete-btn:hover {
+    text-decoration: underline;
+  }
   
   /* -----수정 및 저장 버튼 스타일----------- */
   .edit-btn, .delete-btn, .save-btn {
-    padding: 6px 12px;
+    padding: 6px 6px;
     font-size: 0.9em;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     transition: background-color 0.3s;
-    margin-right: 5px;
+    background-color: transparent;
   }
-  
-  .edit-btn {
-    background-color: #4CAF50;
+
+  .submitBtn-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content:flex-end;
+
   }
-  
-  .edit-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .delete-btn {
-    background-color: #f44336;
-  }
-  
-  .delete-btn:hover {
-    background-color: #e41e1e;
-  }
-  
-  .save-btn {
-    background-color: #007BFF;
-  }
-  
-  .save-btn:hover {
-    background-color: #0056b3;
-  }
-  
 
   .button-container {
     display: flex;
+    justify-content: flex-end;
     gap: 10px;
     margin-top: 10px;
   }
@@ -144,43 +127,47 @@
   }
   
   .edit-content:focus {
-    border-color: #6a00ff;
+    border-color: #1e90ff;
     outline: none;
   }
   /* ----------------------------------*/
   .guestbook {
-    background-color: #f0f0f0;
     align-items: center;
     justify-content: center;
-    max-width: 1000px;
     margin: 0 auto 20px;
     padding-top: 30px;
+    max-width: 800px;
   }
-  hr{
-    margin:10px auto 10px auto;
-    max-width: 90%;
+  
+  .profile-image {
+    background: #f2f2f2;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
   }
+
+  .profile-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
   
   
 </style>
 
-  <div class="guestbook">
-    <h1 class="guestbookTitle">방명록</h1>
-
-    <hr>
+  <div class="web-container guestbook">
+    <h1 class="sub-title">방명록</h1>
     <div class="guestbookForm"> <!-- 방명록 작성 폼 -->
       <form id="guestbookForm">
-
-        <input type="text" id="in_nickname" name="nickname" placeholder="닉네임" required>
-
-
         <textarea id="in_content" name="content" placeholder="내용"></textarea>
-
-        <button type="submit" class="submit-btn">방명록 남기기</button>
+        <div class="submitBtn-wrap">
+          <button type="submit" class="submit-btn">방명록 남기기</button>
+        </div>
+        
       </form>
     </div>
-
-    <hr>
 
     <!-- 방명록 리스트 -->
     <div id="guestbookEntries">

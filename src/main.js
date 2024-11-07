@@ -5,9 +5,14 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 onAuthStateChanged(auth, (user) => {
     const loginBtn = document.querySelector(".login-btn")
     const logoutBtn = document.querySelector(".logout-btn")
+    const userBox = document.querySelector('.user-name')
 
     if (user) {
         console.log("로그인 상태입니다:", user.email);
+
+        userBox.innerHTML = user.displayName;
+
+
         loginBtn.style.display = "none";
         logoutBtn.style.display = "block";
 
