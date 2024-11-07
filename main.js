@@ -1,10 +1,10 @@
-import { auth } from '/src/modules/firebase.js';
+import { auth } from '/modules/firebase.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     
     // 네비게이션 렌더링
-    fetch('/src/navbar.html')
+    fetch('/navbar.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('navbar').innerHTML = data;
@@ -14,20 +14,20 @@ document.addEventListener("DOMContentLoaded", function () {
             if (navbarBrand) {
                 navbarBrand.addEventListener('click', (event) => {
                     event.preventDefault();
-                    window.location.href = '/src/index.html';
+                    window.location.href = '/index.html';
                 });
             }
         })
         .catch(error => console.error('Error loading navbar:', error));
 
     // 방명록 HTML 및 JS 로드
-    fetch('/src/guestbook.html')
+    fetch('/guestbook.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('guestbookSection').innerHTML = data;
 
             // 방명록 HTML 로드 후 guestbook.js 모듈 불러오기
-            import('/src/guestbook.js')
+            import('/guestbook.js')
                 .then(module => {
                     const userName = document.getElementById("guestbookSection").getAttribute("data-username");
                     console.log("userName:", userName); // userName 값이 제대로 들어오는지 확인
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error loading guestbook.html:', error));
 
     // Footer 로드
-    fetch('/src/footer.html')
+    fetch('/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;

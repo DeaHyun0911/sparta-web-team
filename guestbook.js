@@ -1,4 +1,4 @@
-import { db, auth, collection, addDoc, getDocs,serverTimestamp , query, orderBy,doc, updateDoc, deleteDoc} from '/src/modules/firebase.js';
+import { db, auth, collection, addDoc, getDocs,serverTimestamp , query, orderBy,doc, updateDoc, deleteDoc} from '/modules/firebase.js';
 import { onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 
@@ -17,7 +17,7 @@ function checkLoginStatus(callback) {
       callback(user);
     } else {
       alert("로그인이 필요한 서비스입니다.");
-      window.location.href = "/src/login.html";
+      window.location.href = "/login.html";
     }
   });
 }
