@@ -36,7 +36,8 @@ export function submitGuestbookEntry(pageOwner) {
           writerEmail: user.email,     // 작성자 이메일 (로그인된 사용자)
           nickname: user.displayName,   // 입력된 닉네임
           content: content,            // 입력된 내용
-          date: serverTimestamp()      // 작성 날짜
+          date: serverTimestamp(),   // 작성 날짜
+          profileImageUrl: user.photoURL || "/resources/img/user-thumbnail.png" //
         });
 
         guestbookForm.reset();
@@ -84,6 +85,22 @@ function displayEntry(entry) {
 
   const profileImageDiv = document.createElement("div");
   profileImageDiv.classList.add("profile-image");
+
+  const profileImage = document.createElement("img");
+  profileImage.src = entry.profileImageUrl || "/resources/img/user-thumbnail.png";
+  profileImage.alt = "프로필 이미지";
+  profileImage.classList.add("profile-img");
+  profileImageDiv.appendChild(profileImage);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user && user.email === entry.writerEmail) {
+      profileImage.src = user.photoURL || "/resources/img/user-thumbnail.png";
+      nicknameDiv.textContent = user.displayName || "사용자";
+    } else {
+      profileImage.src = entry.profileImageUrl || "/resources/img/user-thumbnail.png";
+      nicknameDiv.textContent = entry.nickname || "사용자";
+    }
+  });
 
   const nicknameDiv = document.createElement("div");
   nicknameDiv.classList.add("nickname");

@@ -61,6 +61,11 @@ a:hover {
 }
 
 /* 로그인, 회원가입 */
+
+.login-btn, .logout-btn {
+    display: none;
+  }
+
 .member-container {
 	max-width: 360px;
 	margin: 0 auto;
@@ -82,6 +87,24 @@ section.member-container {
 #form-submit:disabled {
 	background-color: gray;
 	border-color: gray;
+}
+
+.nav-profile-img {
+	width: 100%;
+}
+
+.nav-profile-box {
+	display: flex;
+	align-items: center;
+}
+
+.profile-img-box {
+	background: #f2f2f2;
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    margin-right: 5px;
+	overflow: hidden;
 }
 
 /* 네비게이션 */
