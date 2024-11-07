@@ -14,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="module">
     import { fetchData } from '../modules/firebase.js';
-
+    
     async function displayMemberData(memberName) {
         const data = await fetchData('members');
 
@@ -33,7 +33,7 @@
     }
 
 
-    displayMemberData('김호진'); 
+    displayMemberData('김호진');
 
 </script>
 
@@ -42,8 +42,9 @@
         <div id="navbar"></div>
     </header>
 
-    <h1>안녕하세요~ 팀의 막내 김호진 입니다!</h1>
+
     <div class="profile"><!--프로필-->
+        <h1>안녕하세요~ 팀의 막내 김호진 입니다!</h1>
         <div class="intro">
             <div>
                 <img id="my_img">
@@ -78,10 +79,12 @@
 
 
     </div>
+    <div id="guestbookSection" data-username="김호진"></div>
+
     <div id="footer"></div>
     <!-- 공통 모듈 -->
     <script src="/src/main.js" type="module"></script>
-
+   
 </body>
 
 </html>

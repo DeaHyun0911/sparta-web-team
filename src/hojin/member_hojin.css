@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Nanum+Pen+Script&display=swap');
 
-* {
+.profile * {
     font-family: "Jua", sans-serif;
 }
 
@@ -13,7 +13,7 @@
     object-fit: cover;
 }
 
-h1 {
+.profile h1 {
     font-family: "Nanum Pen Script", cursive;
     text-align: center;
     margin: 50px auto 80px auto;
@@ -75,4 +75,7 @@ h1 {
 
 .icon {
     padding-bottom: 50px;
+}
+#guestbookSection{
+    margin-top: 100px;
 }

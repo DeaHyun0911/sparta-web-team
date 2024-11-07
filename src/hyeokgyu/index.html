@@ -11,10 +11,12 @@
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.909);
-            color: white;
+            
             font-family: 'D2 Coding', monospace;
         }
-
+        .white{
+            color: white;
+        }
         .profile-container {
             max-width: 400px;
             margin: 50px auto;
@@ -58,6 +60,9 @@
         .introduction-detail p {
             color: white;
         }
+        #guestbookSection{
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -67,7 +72,7 @@
     <header>
         <div id="navbar"></div>
     </header>
-
+<div class="white">
 <div class="profile-container">
     <div class="profile-photo"></div>
     <div class="profile-info">
@@ -110,6 +115,8 @@
     
         displayConsole();
 </script>
+</div>
+<div id="guestbookSection" data-username="우혁규"></div>
 
 <div id="footer"></div>
 <!-- 공통 모듈 -->

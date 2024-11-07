@@ -24,13 +24,14 @@
         $('.m_comment').append(member.comment);
         $('.m_merit').text(member.merit);
         $('.m_style').text(member.style);
-        $('.m_tmi').text(member.tmi);
+        $('.m_tmi').html(member.tmi);
         $('#image').attr('src', member.img_url);
     }
 
 
     displayMemberData('김우현'); 
 </script>
+
 
 <style>
     * {
@@ -88,6 +89,9 @@
     .details h2 {
         margin-top: 35px;
     }
+    #guestbookSection{
+        margin-top: 50px;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -117,6 +121,8 @@
             <p class="m_style"></p>
         </div>
     </div>
+    
+    <div id="guestbookSection" data-username="김우현"></div>
 
     <div id="footer"></div>
 

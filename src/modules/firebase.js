@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy,doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 
@@ -19,10 +19,10 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 async function fetchData(collectionName) {
-    const querySnapshot = await getDocs(collection(db, collectionName));
-    const data = querySnapshot.docs.map(doc => doc.data());
-    return data;
-  }
-  
+  const querySnapshot = await getDocs(collection(db, collectionName));
+  const data = querySnapshot.docs.map(doc => doc.data());
+  return data;
+}
 
-export { db, auth, collection, addDoc, getDocs, fetchData };
+
+export { db, auth, collection, addDoc, getDocs, fetchData, serverTimestamp, query, orderBy ,doc, updateDoc, deleteDoc};
