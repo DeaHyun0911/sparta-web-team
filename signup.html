@@ -45,21 +45,40 @@
       }
 
       emailInput.addEventListener("input", () => {
-          validateForm();
-          setError(""); 
-      });
-      passwordInput.addEventListener("input", () => {
-          validateForm();
-          setError("");
-      });
+        if (!validRegex.test(emailInput.value)) {
+            setError("유효하지 않은 이메일 형식입니다.");
+        } else {
+            setError("");
+        }
+        validateForm();
+    });
+
+    passwordInput.addEventListener("input", () => {
+        if (passwordInput.value.length < 8) {
+            setError("비밀번호는 8자리 이상이어야 합니다.");
+        } else {
+            setError("");
+        }
+        validateForm();
+    });
+
       passwordConfirmInput.addEventListener("input", () => {
-          validateForm();
-          setError("");
-      });
+        if (passwordInput.value !== passwordConfirmInput.value) {
+            setError("비밀번호가 일치하지 않습니다.");
+        } else {
+            setError("");
+        }
+        validateForm();
+    });
+
       nicknameInput.addEventListener("input", () => {
-          validateForm();
-          setError("");
-      });
+        if (nicknameInput.value.trim().length === 0) {
+            setError("닉네임을 입력해 주세요.");
+        } else {
+            setError("");
+        }
+        validateForm();
+    });
 
       signupForm.addEventListener("submit", async (e) => {
           e.preventDefault();

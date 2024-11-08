@@ -33,7 +33,7 @@ export function submitGuestbookEntry(pageOwner) {
       try {
         await addDoc(collection(db, "guestbook"), {
           pageOwner: pageOwner,        // 페이지 주인 
-          writerEmail: user.email,     // 작성자 이메일 (로그인된 사용자)
+          writerEmail: user.email,     // 작성자 이메일
           nickname: user.displayName,   // 입력된 닉네임
           content: content,            // 입력된 내용
           date: serverTimestamp(),   // 작성 날짜
